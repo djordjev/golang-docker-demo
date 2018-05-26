@@ -7,11 +7,15 @@ WORKDIR /go/src/github.com/djordjev/docker-debugger
 ADD . .
 
 RUN apk add --no-cache git
-RUN go get github.com/codegangsta/gin
+#RUN go get github.com/codegangsta/gin
 
-RUN go build ./simple-http.go
+RUN go get github.com/derekparker/delve/cmd/dlv
+RUN apk add --no-cache gcc musl-dev
+
+RUN ["chmod", "+x", "./docker-bootstrap.sh"]
 
 
-EXPOSE 3000
+EXPOSE 3001
+EXPOSE 2345
 
-ENTRYPOINT ["gin", "run", "simple-http.go"]
+ENTRYPOINT ["./docker-bootstrap.sh"]
