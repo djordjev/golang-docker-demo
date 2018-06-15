@@ -4,9 +4,12 @@ services:
   goweb:
     build: .
     ports:
-      - "80:3001"
+#      - "80:3001"
+      - "80:3000"
       - "2345:2345"
     volumes:
       - .:/go/src/github.com/djordjev/docker-debugger
     security_opt:
       - seccomp:unconfined
+    entrypoint:
+      - ./bootstrap/docker-bootstrap-run.sh

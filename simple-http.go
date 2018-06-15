@@ -20,6 +20,6 @@ func Handler(response http.ResponseWriter, request *http.Request) {
 		responseSlice = append(responseSlice, fmt.Sprintf("Key: %s and valie %s", key, val))
 	}
 
-	answer := "Hello, queries you set are:"
+	answer := "Hello, queries you set are"
 	response.Write([]byte(fmt.Sprintf("%s\n%s", answer, strings.Join(responseSlice, "\n"))))
 }

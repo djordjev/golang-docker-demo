@@ -2,4 +2,4 @@
 
 # build
 go build -gcflags='-N -l' ./simple-http.go
-dlv debug --headless --listen=:2345 --api-version=2 --log
+dlv exec ./simple-http --headless --listen=:2345 --api-version=2 --log
